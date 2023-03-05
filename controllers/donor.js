@@ -11,8 +11,8 @@ exports.newDonor = async (req, res) => {
       bloodGroup: req.body.bloodGroup,
       anyDieases: req.body.anyDieases,
     });
-    const savedRecieptent = await newDonnor.save();
-    res.status(201).json(savedRecieptent);
+    await newDonnor.save();
+    res.status(201).json({ message: "New Donnor added successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -20,7 +20,7 @@ exports.newDonor = async (req, res) => {
 
 exports.getDonor = async (req, res) => {
   try {
-    const getAll = await donor.find({});
+    const getAll = await donor.find({}).select("-__v");
     res.status(200).json(getAll);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -30,7 +30,7 @@ exports.getDonor = async (req, res) => {
 exports.getById = async (req, res) => {
   const { id } = req.params;
   try {
-    const person = await donor.find({ _id: id });
+    const person = await donor.find({ _id: id }).select("-__v");
     res.status(200).json(person);
   } catch (error) {
     res.status(500).json({ error: error.message });
