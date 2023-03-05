@@ -15,6 +15,7 @@ const donor = new mongoose.Schema(
     },
     phoneNumber: {
       type: String,
+      unique: true,
       required: [true, "Please provide a phone number"],
     },
     address: {
@@ -23,6 +24,7 @@ const donor = new mongoose.Schema(
     },
     bloodGroup: {
       type: String,
+      enum: ["A+", "A-", "B+", "B-", "O-", "O+", "AB+", "AB-"],
       require: [true, "Please provide a blood group"],
     },
     anyDieases: {

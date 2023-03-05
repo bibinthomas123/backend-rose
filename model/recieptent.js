@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-const recieptent = new mongoose.Schema(
+const donors = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Please provide a name"],
     },
     email: {
       type: String,
@@ -15,19 +15,20 @@ const recieptent = new mongoose.Schema(
     },
     phoneNumber: {
       type: String,
-      required: true,
+      required: [true, "Please provide a phone number"],
     },
     address: {
       type: String,
-      required: true,
+      required: [true, "Please provide an address"],
     },
     bloodGroup: {
       type: String,
-      required: true,
+      enum: ["A+", "A-", "B+", "B-", "O-", "O+", "AB+", "AB-"],
+      required: [true, "Please provide a blood group"],
     },
     anyDieases: {
       type: Boolean,
-      required: true,
+      required: [true, "Please provide any diseases (if any)"],
     },
     urgent: {
       type: Boolean,
@@ -38,4 +39,4 @@ const recieptent = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("recieptent", recieptent);
+module.exports = mongoose.model("donors", donors);
