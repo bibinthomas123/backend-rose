@@ -40,8 +40,14 @@ const recieptent = new mongoose.Schema(
       required: true,
       default: false,
     },
+    view: {
+      type: Boolean,
+      default: function() {
+        return !this.anyDiseases;
+      }
+    }
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("recieptents", recieptent);
+module.exports = mongoose.model("recieptent", recieptent);

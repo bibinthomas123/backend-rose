@@ -3,13 +3,13 @@ const donor = require("../model/donor");
 
 exports.stats = async (req, res) => {
   try {
-    const data = {};
+   
     const bloodGroup = {
       donor: {},
       recieptents: {},
     };
     await recieptent.find({}).then((recieptents) => {
-      data.NoOfrecieptents = recieptents.length;
+      bloodGroup.recieptents.NoOfrecieptents = recieptents.length;
 
       recieptents.forEach((recieptent) => {
         if (bloodGroup.recieptents[recieptent.bloodGroup]) {
@@ -20,7 +20,7 @@ exports.stats = async (req, res) => {
       });
     });
     await donor.find({}).then((donors) => {
-      data.NoOfdonors = donors.length;
+      bloodGroup.donor.NoOfdonors = donors.length;
 
       donors.forEach((donor) => {
         if (bloodGroup.donor[donor.bloodGroup.donor]) {

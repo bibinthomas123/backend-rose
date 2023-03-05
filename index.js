@@ -27,6 +27,7 @@ app.use("/", (req, res) => {
   res.send("hello");
 });
 
+
 //database connection
 const port = process.env.PORT || 6000;
 mongoose
