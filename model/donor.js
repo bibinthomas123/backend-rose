@@ -15,8 +15,8 @@ const donor = new mongoose.Schema(
     },
     phoneNumber: {
       type: String,
-      unique: true,
       required: [true, "Please provide a phone number"],
+      validate: [validator.isMobilePhone, "please enter a valid mobile number"],
     },
     address: {
       type: String,
@@ -30,6 +30,10 @@ const donor = new mongoose.Schema(
     anyDieases: {
       type: Boolean,
       required: [true, "Please provide a dieases (if any)"],
+    },
+    role: {
+      type: String,
+      enum: ["donor", "recieptent"],
     },
     urgent: {
       type: Boolean,

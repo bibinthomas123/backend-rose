@@ -13,11 +13,11 @@ Router.route("/recieptent/:id")
   .delete(Recieptent.deleteRecep)
   .patch(Recieptent.updateRecap);
 
-Router.route("/donor").post(Donor.newDonor).get(Donor.getDonor);
-Router.route("/donor/:id")
-  .get(Donor.getById)
-  .delete(Donor.deleteDonor)
-  .patch(Donor.updateDonor);
+// Router.route("/donor").post(Donor.newDonor).get(Donor.getDonor);
+// Router.route("/donor/:id")
+//   .get(Donor.getById)
+//   .delete(Donor.deleteDonor)
+//   .patch(Donor.updateDonor);
 
 Router.get("/stats", Stats.stats);
 module.exports = Router;

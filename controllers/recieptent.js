@@ -1,5 +1,4 @@
 const recieptent = require("../model/recieptent");
-const donor = require("../model/donor");
 
 exports.newRecieptent = async (req, res) => {
   try {
@@ -10,6 +9,7 @@ exports.newRecieptent = async (req, res) => {
       address: req.body.address,
       bloodGroup: req.body.bloodGroup,
       anyDieases: req.body.anyDieases,
+      role: "recieptent",
     });
     await newRecieptent.save();
     res.status(201).json({ message: "New Recieptent added successfully" });
@@ -62,8 +62,6 @@ exports.updateRecap = async (req, res) => {
     res.status(500).json({ status: "failure", error: error.message });
   }
 };
-
-
 
 // Path: controllers\recieptent.js
 

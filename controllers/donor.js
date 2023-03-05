@@ -1,11 +1,8 @@
 const donor = require("../model/donor");
 
-
-
-// donor.deleteMany({}).then(() => { 
+// donor.deleteMany({}).then(() => {
 //   console.log("deleted all donors");
 // });
-
 
 exports.newDonor = async (req, res) => {
   try {
@@ -16,6 +13,7 @@ exports.newDonor = async (req, res) => {
       address: req.body.address,
       bloodGroup: req.body.bloodGroup,
       anyDieases: req.body.anyDieases,
+      role: "donor",
     });
 
     await newDonnor.save();
