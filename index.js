@@ -11,6 +11,9 @@ app.use(bodyParser.json());
 
 //routes
 app.use("/api/v1", routes);
+app.use("/", (req, res) => {
+  res.send("hello");
+});
 
 //database connection
 const port = process.env.PORT || 6000;
