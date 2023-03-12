@@ -3,9 +3,16 @@ const validator = require("validator");
 
 const donor = new mongoose.Schema(
   {
-    name: {
+    fname: {
       type: String,
       required: [true, "Please provide a name"],
+    },
+    lname: {
+      type: String
+    },
+    DOB:{
+      type: String,
+      required: [true, "Please provide a DOB"],
     },
     email: {
       type: String,
@@ -21,10 +28,25 @@ const donor = new mongoose.Schema(
       type: String,
       required: [true, "Please provide a address"],
     },
+    occupation:{
+      type:String,
+    },
     bloodGroup: {
       type: String,
       enum: ["A+", "A-", "B+", "B-", "O-", "O+", "AB+", "AB-"],
       require: [true, "Please provide a blood group"],
+    },
+    didDonateBlood:{
+      type:Boolean, 
+      required:[true,"Please provide a didDonateBlood"],
+    },
+    anyAllergies:{
+      type: Boolean,
+      required: [true, "Please provide a allergies (if any)"],
+    },
+    cardiacProblem:{
+      type: Boolean,
+      required: [true, "Please provide a cardiacProblem (if any)"],
     },
     anyDieases: {
       type: Boolean,

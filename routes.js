@@ -9,19 +9,11 @@ Router.route("/recieptent")
   .get(Recieptent.getRecieptent);
 
 Router.route("/recieptent/:id")
-  .get((req, res, next) => {
-    req.query.view = true;
-    next();
-  }, Recieptent.getById)
+  .get( Recieptent.getById)
   .delete(Recieptent.deleteRecep)
   .patch(Recieptent.updateRecap);
 
-Router.route("/donor")
-  .post(Donor.newDonor)
-  .get((req, res, next) => {
-    req.query.view = true;
-    next();
-  }, Donor.getDonor);
+Router.route("/donor").post(Donor.newDonor).get(Donor.getDonor);
 Router.route("/donor/:id")
   .get(Donor.getById)
   .delete(Donor.deleteDonor)

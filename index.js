@@ -23,13 +23,10 @@ app.use((req, res, next) => {
 });
 //routes
 app.use("/api/v1", routes);
-app.use("/", (req, res) => {
-  res.send("hello");
-});
 
 
 //database connection
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 3000;
 mongoose
   .connect(
     "mongodb+srv://admin:admin@blogdata.tkze99t.mongodb.net/?retryWrites=true&w=majority",

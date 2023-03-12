@@ -3,9 +3,16 @@ const validator = require("validator");
 
 const recieptent = new mongoose.Schema(
   {
-    name: {
+    fname: {
       type: String,
       required: [true, "Please provide a name"],
+    },
+    lname: {
+      type: String,
+    },
+    DOB: {
+      type: String,
+      required: [true, "Please provide a DOB"],
     },
     email: {
       type: String,
@@ -16,36 +23,50 @@ const recieptent = new mongoose.Schema(
     phoneNumber: {
       type: String,
       required: [true, "Please provide a phone number"],
-      validate: [validator.isMobilePhone, "please enter a valid mobile number"],
     },
     address: {
       type: String,
-      required: [true, "Please provide an address"],
+      required: [true, "Please provide a address"],
+    },
+    occupation: {
+      type: String,
     },
     bloodGroup: {
       type: String,
       enum: ["A+", "A-", "B+", "B-", "O-", "O+", "AB+", "AB-"],
-      required: [true, "Please provide a blood group"],
+      require: [true, "Please provide a blood group"],
+    },
+    didDonateBlood: {
+      type: Boolean,
+      required: [true, "Please provide a didDonateBlood"],
+    },
+    anyAllergies: {
+      type: Boolean,
+      required: [true, "Please provide a allergies (if any)"],
+    },
+    cardiacProblem: {
+      type: Boolean,
+      required: [true, "Please provide a cardiacProblem (if any)"],
     },
     anyDieases: {
       type: Boolean,
-      required: [true, "Please provide any diseases (if any)"],
-    },
-    role: {
-      type: String,
-      enum: ["donor", "recieptent"],
+      required: [true, "Please provide a dieases (if any)"],
     },
     urgent: {
       type: Boolean,
       required: true,
       default: false,
     },
+    role: {
+      type: String,
+      enum: ["donor", "recieptent"],
+    },
     view: {
       type: Boolean,
-      default: function() {
-        return !this.anyDiseases;
-      }
-    }
+      default: function () {
+        return !this.anyDieases;
+      },
+    },
   },
   { timestamps: true }
 );

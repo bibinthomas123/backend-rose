@@ -50,7 +50,7 @@ exports.updateRecap = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const data = await recieptent.findByIdAndUpdate(
+    await recieptent.findByIdAndUpdate(
       { _id: id },
       { $set: req.body }
     );
